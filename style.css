@@ -324,3 +324,33 @@ h1 .w>i{display:inline-block;font-style:normal;opacity:0;transform:translateY(.5
 .band{padding:90px 0}
 .band h2{font-size:clamp(1.8rem,3.6vw,2.8rem)}
 @media(max-width:600px){.section{padding:84px 0}}
+
+/* ===== v3: clarity ===== */
+html{font-size:17px}
+:root{--muted:#b7c7e6}
+body{color:#f2f6ff}
+.section.light{--muted:#3d5276}
+.lead,.head p,.muted{color:#c3d1ee}
+.section.light .head p,.section.light .muted,.section.light p{color:#3d5276}
+.card p,.why-item p,.step p,.faq p{color:#b7c7e6}
+.section.light .card p{color:#3d5276}
+.aurora i{opacity:.35}
+#neural{opacity:.45}
+h2{font-size:clamp(1.9rem,4vw,3rem)}
+.logo-main{width:100%;border-radius:50%;display:block}
+.logo-wrap{width:74%;background:#fff;border-radius:50%;padding:0;box-shadow:0 0 0 10px rgba(255,255,255,.06),0 0 100px rgba(30,144,255,.55),0 40px 80px -20px rgba(0,0,0,.6);position:relative;z-index:2;animation:float 6s ease-in-out infinite;transition:transform .2s}
+.hero-visual::before{display:none}
+.banner{position:relative;margin:0 auto 40px;max-width:1100px;border-radius:26px;padding:10px;background:linear-gradient(135deg,rgba(56,210,255,.7),rgba(106,124,255,.5));box-shadow:0 40px 90px -30px rgba(30,144,255,.7);cursor:zoom-in;transition:transform .4s}
+.banner:hover{transform:translateY(-6px) scale(1.01)}
+.banner img{width:100%;height:auto;border-radius:18px;display:block}
+.banner figcaption{position:absolute;right:22px;bottom:22px;display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;background:rgba(5,11,26,.78);backdrop-filter:blur(8px);font-size:.8rem;font-weight:600}
+.banner figcaption svg{width:16px;height:16px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto}
+.trio>div{padding:22px 24px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.trio b{display:block;font-family:var(--head);font-size:1.1rem;margin-bottom:4px;color:#fff}
+.trio span{color:var(--muted);font-size:.94rem}
+@media(max-width:800px){.trio{grid-template-columns:1fr}}
+.lightbox{position:fixed;inset:0;z-index:500;background:rgba(3,8,22,.92);backdrop-filter:blur(8px);display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;transition:.3s;cursor:zoom-out}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox img{max-width:min(1400px,100%);max-height:92vh;border-radius:14px;box-shadow:0 0 80px rgba(30,144,255,.5)}
+.lightbox button{position:absolute;top:18px;right:22px;width:46px;height:46px;border-radius:50%;border:0;background:#fff;color:#0a1b3d;font-size:1.8rem;cursor:pointer}

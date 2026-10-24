@@ -183,3 +183,11 @@
     ctx.globalCompositeOperation='source-over';
   }
 })();
+
+(function(){
+  var f=document.getElementById('bannerFig'),lb=document.getElementById('lightbox');
+  if(!f||!lb)return;
+  function close(){lb.classList.remove('open')}
+  f.onclick=function(){lb.querySelector('img').src=f.querySelector('img').src;lb.classList.add('open')};
+  lb.onclick=close;addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
