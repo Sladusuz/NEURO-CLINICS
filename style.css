@@ -218,3 +218,27 @@ h2{font-size:clamp(1.7rem,3.6vw,2.7rem);font-weight:700;margin-bottom:16px}
   .band-in{text-align:center;justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* devices, symptoms, prices */
+.devices{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 28px}
+.devices figure{background:#fff;border-radius:18px;padding:10px;text-align:center;box-shadow:0 20px 40px -20px rgba(30,144,255,.6)}
+.devices img{border-radius:10px;width:100%}
+.devices figcaption{color:#0b2a66;font-family:var(--head);font-weight:700;padding-top:6px}
+.symptoms{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.symptoms li{padding:14px 16px 14px 44px;border-radius:14px;background:var(--card);border:1px solid var(--line);position:relative;font-weight:600;transition:.3s}
+.symptoms li::before{content:"";position:absolute;left:16px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--grad);box-shadow:0 0 12px var(--cyan)}
+.symptoms li:hover{transform:translateX(6px);border-color:rgba(56,210,255,.5)}
+.prices{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:10px 26px;backdrop-filter:blur(10px)}
+.p-row{display:flex;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);transition:.25s}
+.p-row:last-child{border:0}
+.p-row i{flex:1;border-bottom:2px dotted rgba(120,170,255,.25);transform:translateY(-4px)}
+.p-row b{font-family:var(--head);color:var(--cyan);white-space:nowrap}
+.p-row b::after{content:" so'm";font-size:.75rem;color:var(--muted);font-weight:500}
+.p-row:hover{padding-inline:10px;background:rgba(30,144,255,.07)}
+.center{text-align:center;margin-top:24px}.tel{color:var(--cyan);font-weight:700}
+@media(max-width:600px){.symptoms{grid-template-columns:1fr}}
+.feature-price{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:30px 34px;margin-bottom:38px;border-radius:var(--r);background:linear-gradient(120deg,#0b4fd6,#1e90ff 60%,#38d2ff);box-shadow:0 30px 60px -30px rgba(30,144,255,.9)}
+.feature-price small{opacity:.85;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.75rem}
+.feature-price h3{font-size:1.8rem;margin:4px 0}.feature-price p{opacity:.9}
+.feature-price b{font-family:var(--head);font-size:2.4rem}.feature-price b span{font-size:1rem;font-weight:500}
+.sub{font-size:1.2rem;margin-bottom:14px}.sub small{color:var(--muted);font-weight:500;font-size:.85rem}
