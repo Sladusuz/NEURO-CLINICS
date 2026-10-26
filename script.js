@@ -97,7 +97,7 @@
     ev.preventDefault();var ok=true;
     ['name','phone'].forEach(function(n){var i=f.elements[n];var bad=i.value.trim().length<(n==='phone'?7:2);i.classList.toggle('err',bad);if(bad)ok=false});
     if(!ok){note.textContent='Iltimos, ism va telefon raqamni to\'g\'ri kiriting.';return}
-    var d=f.elements,text='NEURO CLINICS — yangi so\'rov\nIsm: '+d.name.value+'\nTelefon: '+d.phone.value+'\nXizmat: '+d.service.value+(d.msg.value?'\nIzoh: '+d.msg.value:'');
+    var d=f.elements,text='Vene Medical — yangi so\'rov\nIsm: '+d.name.value+'\nTelefon: '+d.phone.value+'\nXizmat: '+d.service.value+(d.msg.value?'\nIzoh: '+d.msg.value:'');
     if(location.protocol.indexOf('http')===0){try{fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})}catch(_){}}
     window.open('https://t.me/share/url?url=%20&text='+encodeURIComponent(text),'_blank');
     note.textContent='Rahmat! So\'rovingiz tayyor — Telegram orqali yuboring.';f.reset();
@@ -157,3 +157,11 @@
 // fallback: never leave content hidden if IntersectionObserver misbehaves
 setTimeout(function(){[].forEach.call(document.querySelectorAll('.reveal:not(.in)'),function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*1.2)el.classList.add('in')})},2500);
 addEventListener('scroll',function(){[].forEach.call(document.querySelectorAll('.reveal:not(.in)'),function(el){if(el.getBoundingClientRect().top<innerHeight*.92)el.classList.add('in')})},{passive:true});
+
+(function(){
+  var b=document.getElementById('openBadge');if(!b)return;
+  var t=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Tashkent'})),d=t.getDay(),h=t.getHours()+t.getMinutes()/60;
+  var open=d>=1&&d<=6&&h>=8&&h<16;
+  b.classList.add(open?'open':'closed');
+  b.lastElementChild.textContent=open?'Hozir ochiq · 16:00 gacha':(d===0?'Bugun dam olish kuni':'Hozir yopiq · 08:00 da ochiladi');
+})();

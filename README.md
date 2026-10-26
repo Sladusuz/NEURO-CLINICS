@@ -1,4 +1,4 @@
-# NEURO CLINICS
+# Vene Medical
 
 Asab tizimi va umurtqa kasalliklari markazi sayti (statik HTML/CSS/JS).
 
