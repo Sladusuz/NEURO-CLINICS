@@ -97,9 +97,15 @@
     ev.preventDefault();var ok=true;
     ['name','phone'].forEach(function(n){var i=f.elements[n];var bad=i.value.trim().length<(n==='phone'?7:2);i.classList.toggle('err',bad);if(bad)ok=false});
     if(!ok){note.textContent='Iltimos, ism va telefon raqamni to\'g\'ri kiriting.';return}
-    var d=f.elements,text='Vene Medical — yangi so\'rov\nIsm: '+d.name.value+'\nTelefon: '+d.phone.value+'\nXizmat: '+d.service.value+(d.msg.value?'\nIzoh: '+d.msg.value:'');
-    window.open('https://t.me/share/url?url=%20&text='+encodeURIComponent(text),'_blank');
-    note.textContent='Telegram ochildi. Xabarni klinika chatiga yuboring yoki qo\'ng\'iroq qiling: 33 277 19 99.';f.reset();
+    var d=f.elements,btn=f.querySelector('button[type=submit]'),
+        text='Vene Medical — yangi so\'rov\nIsm: '+d.name.value+'\nTelefon: '+d.phone.value+'\nXizmat: '+d.service.value+(d.msg.value?'\nIzoh: '+d.msg.value:''),
+        payload={source:'site',lang:'uz',name:d.name.value.trim(),phone:d.phone.value.trim(),service:d.service.value,comment:d.msg.value.trim(),hp:''};
+    var fallback=function(){window.open('https://t.me/share/url?url=%20&text='+encodeURIComponent(text),'_blank');note.textContent='Avtomatik yuborib bo\'lmadi. Telegram ochildi, xabarni yuboring yoki qo\'ng\'iroq qiling: 33 277 19 99.';btn.disabled=false};
+    btn.disabled=true;note.textContent='Yuborilmoqda...';
+    // text/plain keeps this a "simple" cross-origin request (no CORS preflight); the bot backend parses the JSON body.
+    fetch('https://neuro-clinics-namangan.netlify.app/api/book',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(payload)})
+      .then(function(){note.textContent='Rahmat! So\'rovingiz qabul qilindi, administrator tez orada bog\'lanadi.';f.reset();btn.disabled=false})
+      .catch(fallback);
   });
 })();
 
